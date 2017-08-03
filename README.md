@@ -5,10 +5,10 @@ KityMinder Editor - 支持数学公式的渲染与编辑
 
 本项目基于百度[KityMinder Editor](https://github.com/fex-team/kityminder-editor) 进行二次开发，融入了Kity Formula公式编辑器功能，支持数理化公式的编辑与渲染。
 
-![](https://github.com/rootsli/vue2admin/blob/master/doc/images/1.png)
+![](https://github.com/rootsli/kityminder-editor/blob/master/doc/images/1.png)
 
 
-![](https://github.com/rootsli/vue2admin/blob/master/doc/images/2.png)
+![](https://github.com/rootsli/kityminder-editor/blob/master/doc/images/2.png)
 
 ## 使用
 根目录下的 `index.html` 为开发环境，`dist` 目录下的 `index.html` 使用打包好的代码，适用于线上环境。
