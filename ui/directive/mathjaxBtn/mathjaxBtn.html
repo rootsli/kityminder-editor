@@ -1,0 +1,27 @@
+<div class="btn-group-vertical" dropdown is-open="isopen">
+    <button type="button"
+            class="btn btn-default image-btn"
+            title="{{ 'mathjax' | lang:'ui' }}"
+            ng-class="{'active': isopen}"
+            ng-click="addMathJax()"
+            ng-disabled="minder.queryCommandState('mathjax') === -1"></button>
+    <button type="button"
+            class="btn btn-default image-btn-caption dropdown-toggle"
+            ng-disabled="minder.queryCommandState('mathjax') === -1"
+            title="{{ 'mathjax' | lang:'ui' }}"
+            dropdown-toggle>
+        <span class="caption">{{ 'mathjax' | lang:'ui' }}</span>
+        <span class="caret"></span>
+        <span class="sr-only">{{ 'mathjax' | lang:'ui' }}</span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li>
+            <a href
+               ng-click="addMathJax()">{{ 'insertmathjax' | lang:'ui' }}</a>
+        </li>
+        <li>
+            <a href
+               ng-click="minder.execCommand('mathjax', '')">{{ 'removemathjax' | lang:'ui' }}</a>
+        </li>
+    </ul>
+</div>

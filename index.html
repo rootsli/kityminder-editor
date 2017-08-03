@@ -40,6 +40,30 @@
     <h1 class="editor-title">KityMinder Editor - Powered By FEX</h1>
     <kityminder-editor on-init="initEditor(editor, minder)"></kityminder-editor>
 </body>
+<!-- 公式 -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    skipStartupTypeset:true,
+    showProcessingMessages: false,
+    messageStyle: "none",
+    tex2jax: {
+      inlineMath: [["$", "$"], ["\\(", "\\)"]],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    SVG: {
+      linebreaks: {
+        automatic: true,
+        width: "container"
+      }
+    }
+  });
+</script>
+<script type="text/javascript" src="plugins/MathJax/MathJax.js?config=TeX-AMS-MML_SVG-full,local/local"></script>
+<script type="text/javascript" src="plugins/canvg/rgbcolor.js"></script>
+<script type="text/javascript" src="plugins/canvg/StackBlur.js"></script>
+<script type="text/javascript" src="plugins/canvg/canvg.js"></script>
+<script type="text/javascript" src="plugins/drawLaTex/drawLaTex.js"></script>
 
 <!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -77,6 +101,7 @@
 <script src="ui/filter/lang.filter.js"></script>
 <script src="ui/dialog/hyperlink/hyperlink.ctrl.js"></script>
 <script src="ui/dialog/image/image.ctrl.js"></script>
+<script src="ui/dialog/mathjax/mathjax.ctrl.js"></script>
 <script src="ui/dialog/imExportNode/imExportNode.ctrl.js"></script>
 <script src="ui/directive/topTab/topTab.directive.js"></script>
 <script src="ui/directive/undoRedo/undoRedo.directive.js"></script>
@@ -85,6 +110,7 @@
 <script src="ui/directive/operation/operation.directive.js"></script>
 <script src="ui/directive/hyperLink/hyperLink.directive.js"></script>
 <script src="ui/directive/imageBtn/imageBtn.directive.js"></script>
+<script src="ui/directive/mathjaxBtn/mathjaxBtn.directive.js"></script>
 <script src="ui/directive/noteBtn/noteBtn.directive.js"></script>
 <script src="ui/directive/resourceEditor/resourceEditor.directive.js"></script>
 <script src="ui/directive/priorityEditor/priorityEditor.directive.js"></script>

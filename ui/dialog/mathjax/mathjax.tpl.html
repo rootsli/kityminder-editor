@@ -1,0 +1,15 @@
+<style type="text/css">
+    .modal-lg {
+        width: 985px !important;
+    }
+</style>
+<div class="modal-header">
+    <h3 class="modal-title">数学公式</h3>
+</div>
+<div class="modal-body">
+    <iframe id="iframe_mathjax_editor" style="width:952px;height:800px;" frameborder="no" scrolling="no" ng-src="{{src}}"></iframe>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">确定</button>
+    <button class="btn btn-warning" ng-click="cancel()">取消</button>
+</div>
