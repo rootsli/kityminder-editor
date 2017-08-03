@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>公式编辑器</title>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <style>
+
+        #kfEditorContainer {
+            width: 950px;
+            height: 650px;
+        }
+
+        #preview-panel-wrap{
+            width: 934px;
+            padding: 5px;
+        }
+
+        #preview-panel{
+            background-color: white;
+            width: 928px;
+            height: 100px;
+            padding: 3px;
+            overflow: auto;
+        }
+
+    </style>
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/kitygraph.all.js"></script>
+    <script src="js/kity-formula-render.all.js"></script>
+    <script src="js/kity-formula-parser.all.js"></script>
+    <script src="js/kityformula-editor.all.js"></script>
+    <script>
+
+        jQuery(function ($) {
+
+            var factory = kf.EditorFactory.create($("#kfEditorContainer")[0], {
+                render: {
+                    fontsize: 40
+                },
+                resource: {
+                    path: "resource/"
+                }
+            });
+
+            factory.ready(function () {
+
+                $("#tips").remove();
+
+                window.kfe = this;
+
+                window.getLatexData = function () {
+                    var latex = kfe.execCommand('get.source');
+                    return latex;
+                };
+
+                window.load = function(latex) {
+                    kfe.execCommand("render", latex);
+                    kfe.execCommand("focus");
+                    kfe.execCommand("preview");
+                };
+
+                function init() {
+                    var latex = parent.currentLatex || "\\placeholder";
+                    load(latex);
+                }
+
+                init();
+
+            });
+
+            factory.preview(function(latex) {
+                if(latex.trim() === "\\placeholder"){//只有占位符时,清空预览区域
+                    latex = "";
+                }else{
+                    latex = "\\(" + latex + "\\)";
+                }
+                jQuery("#preview-panel").text(latex);
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            });
+
+        });
+    </script>
+    <script type="text/javascript" src="../../MathJax/MathJax.js?config=TeX-AMS-MML_SVG-full,local/local"></script>
+    <link rel="stylesheet" href="assets/styles/page.css">
+    <link rel="stylesheet" href="assets/styles/base.css">
+    <link rel="stylesheet" href="assets/styles/ui.css">
+    <link rel="stylesheet" href="assets/styles/ui.extension.css">
+    <link rel="stylesheet" href="assets/styles/scrollbar.css">
+</head>
+<body>
+<div id="kfEditorContainer" class="kf-editor">
+    <div id="tips" class="tips">
+        公式编辑器仅支持IE9及以上版本的IE浏览器！
+    </div>
+</div>
+<fieldset id="preview-panel-wrap">
+    <legend>公式预览</legend>
+    <div id="preview-panel"></div>
+</fieldset>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>公式编辑器</title>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <style>
+        #kfEditorContainer {
+            width: 780px;
+            height: 380px;
+        }
+    </style>
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/kitygraph.all.js"></script>
+    <script src="js/kity-formula-render.all.js"></script>
+    <script src="js/kity-formula-parser.all.js"></script>
+    <script src="js/kityformula-editor.all.js"></script>
+    <script>
+        jQuery(function ($) {
+
+            var factory = kf.EditorFactory.create($("#kfEditorContainer")[0], {
+                render: {
+                    fontsize: 40
+                },
+                resource: {
+                    path: "resource/"
+                }
+            });
+
+            factory.ready(function () {
+
+                window.kfe = this;
+
+                window.init = function () {
+                    reload("\\placeholder");
+                };
+
+                window.reload = function (latex) {
+                    kfe.execCommand("render", latex);
+                    kfe.execCommand("focus");
+                };
+
+                window.getLatexData = function (imageData) {
+                    var wrapper = document.createElement("div");
+                    wrapper.innerHTML = imageData;
+                    return wrapper.firstChild.getAttribute("data-latex");
+                };
+
+                window.getImageData = function (callback) {
+                    kfe.execCommand('get.image.data', function (data) {
+                        var latex = kfe.execCommand('get.source');
+                        var imageData = '<img class="kfformula" src="' + data.img + '" data-latex="' + latex + '" />';
+
+                        console.log("output math data:" + imageData);
+
+                        callback(imageData);
+                    });
+                };
+
+                init();
+            });
+        });
+
+    </script>
+    <link rel="stylesheet" href="assets/styles/page.css">
+    <link rel="stylesheet" href="assets/styles/base.css">
+    <link rel="stylesheet" href="assets/styles/ui.css">
+    <link rel="stylesheet" href="assets/styles/scrollbar.css">
+</head>
+<body>
+<div id="kfEditorContainer" class="kf-editor"></div>
+</body>
+</html>
