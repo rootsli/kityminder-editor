@@ -3,10 +3,9 @@ KityMinder Editor - 支持数学公式的渲染与编辑
 
 ## 简介
 
-本项目基于百度[KityMinder Editor](https://github.com/fex-team/kityminder-editor) 进行二次开发，融入了Kity Formula公式编辑器功能，支持数理化公式的编辑与渲染。
+本项目基于百度[KityMinder Editor](https://github.com/fex-team/kityminder-editor) 进行二次开发，融入了[Kity Formula](http://gongshi.baidu.com/)公式编辑器功能，支持数理化公式的编辑与渲染。
 
 ![](https://github.com/rootsli/kityminder-editor/blob/master/doc/images/1.png)
-
 
 ![](https://github.com/rootsli/kityminder-editor/blob/master/doc/images/2.png)
 
