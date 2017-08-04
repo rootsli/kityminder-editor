@@ -101,9 +101,9 @@ define(function (require, exports, module) {
                     width: 250,
                     height: 35
                 };
-                var spaceTop = node.getStyle('space-top');
+                // var spaceTop = node.getStyle('space-top');
                 var x = box.cx - size.width / 2;
-                var y = box.y - size.height - spaceTop;
+                var y = box.y - size.height + 12;//- spaceTop;
 
                 if (!image.getUrl()) {
                     image.setUrl('#');
