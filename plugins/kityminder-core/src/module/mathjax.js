@@ -94,6 +94,7 @@ define(function (require, exports, module) {
             update: function (image, node, box) {
                 window.drawLaTex(node.getData('mathjax'), function (base64Imgs) {
                     image.setUrl(base64Imgs[0][0]);
+                    node.getContentBox().width = 150;
                 });
 
                 var size = {

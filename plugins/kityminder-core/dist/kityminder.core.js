@@ -1,6 +1,6 @@
 /*!
  * ====================================================
- * kityminder - v1.4.43 - 2017-08-03
+ * kityminder - v1.4.43 - 2017-08-04
  * https://github.com/fex-team/kityminder-core
  * GitHub: https://github.com/fex-team/kityminder-core.git 
  * Copyright (c) 2017 Baidu FEX; Licensed MIT
@@ -5996,6 +5996,7 @@ _p[52] = {
                 update: function(image, node, box) {
                     window.drawLaTex(node.getData("mathjax"), function(base64Imgs) {
                         image.setUrl(base64Imgs[0][0]);
+                        node.getContentBox().width = 150;
                     });
                     var size = {
                         width: 250,
@@ -9046,8 +9047,8 @@ _p[75] = {
                 "main-space": 5,
                 "main-shadow": "rgba(0, 0, 0, .25)",
                 "sub-color": "white",
-                "sub-background": "transparent",
-                "sub-stroke": "none",
+                "sub-background": "rgb(238, 243, 246)",
+                "sub-stroke": "rgb(115, 161, 191)",
                 "sub-font-size": 12,
                 "sub-padding": [ 5, 10 ],
                 "sub-margin": compact ? [ 5, 10 ] : [ 15, 20 ],
@@ -9158,7 +9159,10 @@ _p[77] = {
                 "main-space": 5,
                 "sub-color": "black",
                 "sub-background": "transparent",
+                //hsl(h, 33, 95),
                 "sub-stroke": "none",
+                //hsl(h, 37, 60),
+                // 'sub-stroke-width': 1,
                 "sub-font-size": 12,
                 "sub-padding": compat ? [ 3, 5 ] : [ 5, 10 ],
                 "sub-margin": compat ? [ 4, 8 ] : [ 15, 20 ],

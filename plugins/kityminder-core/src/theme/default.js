@@ -29,8 +29,8 @@ define(function(require, exports, module) {
             'main-shadow': 'rgba(0, 0, 0, .25)',
 
             'sub-color': 'white',
-            'sub-background': 'transparent',
-            'sub-stroke': 'none',
+            'sub-background': 'rgb(238, 243, 246)',
+            'sub-stroke': 'rgb(115, 161, 191)',
             'sub-font-size': 12,
             'sub-padding': [5, 10],
             'sub-margin': compact ? [5, 10] : [15, 20],

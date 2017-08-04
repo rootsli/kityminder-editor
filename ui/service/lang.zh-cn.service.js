@@ -187,8 +187,8 @@ angular.module('kityminderEditor')
 					'redo': '重做 (Ctrl + Y)',
 
 					'tabs': {
-						'idea': '思路',
-						'appearence': '外观',
+						'idea': '操作',
+						'appearence': '样式',
 						'view': '视图'
 					},
 
