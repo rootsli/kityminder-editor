@@ -20,6 +20,26 @@ function sendMessage(type, data) {
     }
 }
 
+/**
+ * 获取CS session
+ */
+function getCSSession() {
+    var csData = {
+        "scope": 1,
+        "path": "/qa_content_learningcard/assets",
+        "session": "81ecbad4-eedf-4e9e-8a2a-625f5ff93fed",
+        "expire_at": 1504680456225,
+        "service_id": "9f29f796-d605-40f0-8d20-2f12694c7af6",
+        "role": "admin",
+        "uid": 2083252226,
+        "cs_url": "http://sdpcs.beta.web.sdp.101.com",
+        "expires": 2592000
+    };
+    sendMessage('_mind_res_cs_session_', {
+        data: JSON.stringify(csData)
+    });
+}
+
 //监听message事件
 window.addEventListener('message', function (e) {
     if (typeof(event.data) !== 'undefined') {
@@ -30,8 +50,11 @@ window.addEventListener('message', function (e) {
             params = {};
         }
         switch (params.type) {
-            case '_mind_data_change_': //设置数据
+            case '_mind_data_change_': //数据变更通知
                 alert(params.data);
+                break;
+            case '_mind_req_cs_session_': //请求获取cs session
+                getCSSession();
                 break;
             default:
                 console.log('unknow mesage type');

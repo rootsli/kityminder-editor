@@ -1,5 +1,5 @@
 angular.module('kityminderEditor')
-    .controller('image.ctrl', ['$http', '$scope', '$modalInstance', 'image', 'server', function($http, $scope, $modalInstance, image, server) {
+    .controller('image.ctrl', ['$http', '$scope', '$modalInstance', 'image', 'server', 'messengerService', function ($http, $scope, $modalInstance, image, server, messengerService) {
 
         $scope.data = {
             list: [],
@@ -8,22 +8,21 @@ angular.module('kityminderEditor')
             R_URL: /^https?\:\/\/\w+/
         };
 
-        setTimeout(function() {
+        setTimeout(function () {
             var $imageUrl = $('#image-url');
             $imageUrl.focus();
-            $imageUrl[0].setSelectionRange(0, $scope.data.url.length);
+            // $imageUrl[0].setSelectionRange(0, $scope.data.url.length);
         }, 300);
 
-
         // 搜索图片按钮点击事件
-        $scope.searchImage = function() {
+        $scope.searchImage = function () {
             $scope.list = [];
 
             getImageData()
-                .success(function(json) {
-                    if(json && json.data) {
-                        for(var i = 0; i < json.data.length; i++) {
-                            if(json.data[i].objURL) {
+                .success(function (json) {
+                    if (json && json.data) {
+                        for (var i = 0; i < json.data.length; i++) {
+                            if (json.data[i].objURL) {
                                 $scope.list.push({
                                     title: json.data[i].fromPageTitleEnc,
                                     src: json.data[i].middleURL,
@@ -33,15 +32,15 @@ angular.module('kityminderEditor')
                         }
                     }
                 })
-                .error(function() {
+                .error(function () {
 
                 });
         };
 
         // 选择图片的鼠标点击事件
-        $scope.selectImage = function($event) {
-            var targetItem = $('#img-item'+ (this.$index));
-            var targetImg = $('#img-'+ (this.$index));
+        $scope.selectImage = function ($event) {
+            var targetItem = $('#img-item' + (this.$index));
+            var targetImg = $('#img-' + (this.$index));
 
             targetItem.siblings('.selected').removeClass('selected');
             targetItem.addClass('selected');
@@ -50,26 +49,55 @@ angular.module('kityminderEditor')
             $scope.data.title = targetImg.attr('alt');
         };
 
+        //获取CS session
+        $scope.getCSSession = function () {
+            messengerService.sendMessage('_mind_req_cs_session_', {
+                data: '{}'
+            });
+        };
+
+        //上传图片
+        window.addEventListener('message', function (e) {
+            if (typeof(event.data) !== 'undefined') {
+                var params;
+                try {
+                    params = JSON.parse(e.data);
+                } catch (e) {
+                    params = {};
+                }
+                switch (params.type) {
+                    case '_mind_res_cs_session_': //数据变更通知
+                        $scope.doUploadImage(JSON.parse(params.data));
+                        break;
+                    default:
+                        console.log('unknow mesage type');
+                }
+            }
+        });
+
+        $scope.doUploadImage = function (session) {
+            var file = $('#upload-image')[0].files[0];
+            return server.uploadCsImage(session, file).then(function (resp) {
+                if (resp.data && resp.data.dentry_id) {
+                    $scope.data.url = session.cs_url + '/v0.1/download?dentryId=' + resp.data.dentry_id;
+                }
+            });
+        };
+
         // 自动上传图片，后端需要直接返回图片 URL
-        $scope.uploadImage = function() {
+        $scope.uploadImage = function () {
             var fileInput = $('#upload-image');
             if (!fileInput.val()) {
                 return;
             }
             if (/^.*\.(jpg|JPG|jpeg|JPEG|gif|GIF|png|PNG)$/.test(fileInput.val())) {
-                var file = fileInput[0].files[0];
-                return server.uploadImage(file).then(function (json) {
-                    var resp = json.data;
-                    if (resp.errno === 0) {
-                        $scope.data.url = resp.data.url;
-                    }
-                });
+                $scope.getCSSession();
             } else {
                 alert("后缀只能是 jpg、gif 及 png");
             }
         };
 
-        $scope.shortCut = function(e) {
+        $scope.shortCut = function (e) {
             e.stopPropagation();
 
             if (e.keyCode == 13) {
@@ -80,7 +108,7 @@ angular.module('kityminderEditor')
         };
 
         $scope.ok = function () {
-            if($scope.data.R_URL.test($scope.data.url)) {
+            if ($scope.data.R_URL.test($scope.data.url)) {
                 $modalInstance.close({
                     url: $scope.data.url,
                     title: $scope.data.title
@@ -91,7 +119,7 @@ angular.module('kityminderEditor')
                 var $imageUrl = $('#image-url');
                 if ($imageUrl) {
                     $imageUrl.focus();
-                    $imageUrl[0].setSelectionRange(0, $scope.data.url.length);
+                    // $imageUrl[0].setSelectionRange(0, $scope.data.url.length);
                 }
 
             }
@@ -107,7 +135,7 @@ angular.module('kityminderEditor')
         function getImageData() {
             var key = $scope.data.searchKeyword2;
             var currentTime = new Date();
-            var url = 'http://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&ct=201326592&fp=result&queryWord='+ key +'&cl=2&lm=-1&ie=utf-8&oe=utf-8&st=-1&ic=0&word='+ key +'&face=0&istype=2&nc=1&pn=60&rn=60&gsm=3c&'+ currentTime.getTime() +'=&callback=JSON_CALLBACK';
+            var url = 'http://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&ct=201326592&fp=result&queryWord=' + key + '&cl=2&lm=-1&ie=utf-8&oe=utf-8&st=-1&ic=0&word=' + key + '&face=0&istype=2&nc=1&pn=60&rn=60&gsm=3c&' + currentTime.getTime() + '=&callback=JSON_CALLBACK';
 
             return $http.jsonp(url);
         }
