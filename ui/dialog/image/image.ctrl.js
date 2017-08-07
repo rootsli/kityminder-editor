@@ -1,6 +1,6 @@
 angular.module('kityminderEditor')
     .controller('image.ctrl', ['$http', '$scope', '$modalInstance', 'image', 'server', 'messengerService', function ($http, $scope, $modalInstance, image, server, messengerService) {
-
+        $scope.loading = false;
         $scope.data = {
             list: [],
             url: image.url || '',
@@ -51,6 +51,7 @@ angular.module('kityminderEditor')
 
         //获取CS session
         $scope.getCSSession = function () {
+            $scope.loading = true;
             messengerService.sendMessage('_mind_req_cs_session_', {
                 data: '{}'
             });
@@ -80,12 +81,17 @@ angular.module('kityminderEditor')
             return server.uploadCsImage(session, file).then(function (resp) {
                 if (resp.data && resp.data.dentry_id) {
                     $scope.data.url = session.cs_url + '/v0.1/download?dentryId=' + resp.data.dentry_id;
+                    $scope.loading = false;
                 }
             });
         };
 
         // 自动上传图片，后端需要直接返回图片 URL
         $scope.uploadImage = function () {
+            if ($scope.loading) {
+                return;
+            }
+
             var fileInput = $('#upload-image');
             if (!fileInput.val()) {
                 return;

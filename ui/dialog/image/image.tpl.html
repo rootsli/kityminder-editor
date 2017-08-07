@@ -66,6 +66,7 @@
             <!-- 这里不能用 ng-change -->
             <input type="file" name="upload-image" id="upload-image" class="upload-image" accept=".jpg,.JPG,jpeg,JPEG,.png,.PNG,.gif,.GIF" onchange="angular.element(this).scope().uploadImage()"/>
             <label for="upload-image" class="btn btn-primary"><span>选择文件&hellip;</span></label>
+            <span ng-show="loading" style="margin-left: 15px;color: red;">图片上传中,请稍后......</span>
         </div>
         <div class="form-group" ng-class="{'has-success' : titlePassed}">
             <label for="image-title">提示文本：</label>
