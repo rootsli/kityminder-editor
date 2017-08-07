@@ -14,7 +14,8 @@ KityMinder Editor - 支持数学公式的渲染与编辑
 
 1. 安装 [nodejs](http://nodejs.org) 和 [npm](https://docs.npmjs.com/getting-started/installing-node)
 2. 初始化：切到 kityminder-editor 根目录下运行 `npm run init`
-3. 你可以基于根目录的 `index.html` 开发，或者查看 `dist` 目录下用于生产环境的 `index.html`，Enjoy it!
+3. 你可以基于根目录的 `index.html` 开发，或者查看 `dist` 目录下用于生产环境的 `index.html`
+4. <font color=red>支持iframe方式嵌入用户应用，并通过postMessage()接口通信，示例代码：kityminder-editor/iframe_test/index.html</font>
 
 另外，kityminder-editor 还提供了 bower 包，方便开发者直接使用。你可以在需要用到 kityminder-editor 的工程目录下
 运行 `bower install kityminder-editor`，接着手动引入 kityminder-editor 所依赖的 css 和 js 文件，具体文件见
