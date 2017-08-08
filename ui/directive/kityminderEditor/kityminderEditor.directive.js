@@ -35,7 +35,7 @@ angular.module('kityminderEditor')
                                     editor.minder.importJson(minderData);
                                     break;
                                 default:
-                                    console.log('unknow mesage type');
+                                    console.log('unknow message type');
                             }
                         }
                     });

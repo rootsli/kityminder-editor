@@ -3318,7 +3318,7 @@ angular.module('kityminderEditor')
                         $scope.doUploadImage(JSON.parse(params.data));
                         break;
                     default:
-                        console.log('unknow mesage type');
+                        console.log('unknow message type');
                 }
             }
         });
@@ -3730,7 +3730,7 @@ angular.module('kityminderEditor')
                                     editor.minder.importJson(minderData);
                                     break;
                                 default:
-                                    console.log('unknow mesage type');
+                                    console.log('unknow message type');
                             }
                         }
                     });

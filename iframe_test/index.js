@@ -57,7 +57,7 @@ window.addEventListener('message', function (e) {
                 getCSSession();
                 break;
             default:
-                console.log('unknow mesage type');
+                console.log('unknow message type');
         }
     }
 });
