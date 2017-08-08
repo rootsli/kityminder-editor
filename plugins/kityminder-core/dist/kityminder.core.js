@@ -1,6 +1,6 @@
 /*!
  * ====================================================
- * kityminder - v1.4.43 - 2017-08-04
+ * kityminder - v1.4.43 - 2017-08-08
  * https://github.com/fex-team/kityminder-core
  * GitHub: https://github.com/fex-team/kityminder-core.git 
  * Copyright (c) 2017 Baidu FEX; Licensed MIT
@@ -6004,8 +6004,7 @@ _p[52] = {
                     };
                     var spaceTop = node.getStyle("space-top");
                     var x = box.cx - size.width / 2;
-                    var y = box.y - size.height + 12;
-                    //- spaceTop;
+                    var y = box.y - size.height - spaceTop;
                     if (!image.getUrl()) {
                         image.setUrl("#");
                     }

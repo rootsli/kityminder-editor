@@ -65,75 +65,56 @@ window.addEventListener('message', function (e) {
 function onIframeLoad() {
     var data = {
         "root": {
-            "data": {
-                "id": "berm5d9eie80",
-                "created": 1501829564361,
-                "text": "中心主题"
-            },
-            "children": [
-                {
-                    "data": {
-                        "id": "berqgi7afco0",
-                        "created": 1501841721562,
-                        "text": "分支主题"
-                    },
-                    "children": [
-                        {
-                            "data": {
-                                "id": "berqgis2bnc0",
-                                "created": 1501841722819,
-                                "text": "分支主题"
-                            },
-                            "children": []
-                        },
-                        {
-                            "data": {
-                                "id": "berqgnlbva80",
-                                "created": 1501841733295,
-                                "text": "分支主题"
-                            },
-                            "children": []
-                        }
-                    ]
-                },
-                {
-                    "data": {
-                        "id": "berqgk2n0a80",
-                        "created": 1501841725635,
-                        "text": "分支主题"
-                    },
+            "data": {"id": "berm5d9eie80", "created": 1501829564361, "text": "中心主题", "mathjax": ""},
+            "children": [{
+                "data": {"id": "berqgi7afco0", "created": 1501841721562, "text": "分支主题", "layout": null},
+                "children": [{
+                    "data": {"id": "berqgis2bnc0", "created": 1501841722819, "text": "分支主题", "layout": null},
                     "children": []
-                },
-                {
-                    "data": {
-                        "id": "bermyp3r17k0",
-                        "created": 1501831862701,
-                        "text": "我的一个早晨和傍晚"
-                    },
-                    "children": [
-                        {
-                            "data": {
-                                "id": "bermdb52l6g0",
-                                "created": 1501830186659,
-                                "text": " ",
-                                "mathjax": "\\({这是一个屋里公式：a}^{2}+{b}^{2}={c}^{2}\\)",
-                                "image": "http://img3.imgtn.bdimg.com/it/u=1188174684,795370521&fm=200&gp=0.jpg",
-                                "imageTitle": "野地小花"
-                            },
-                            "children": []
-                        }
-                    ]
-                },
-                {
-                    "data": {
-                        "id": "bersjaw3wtc0",
-                        "created": 1501847582961,
-                        "text": "分支主题"
-                    },
+                }, {
+                    "data": {"id": "berqgnlbva80", "created": 1501841733295, "text": "分支主题", "layout": null},
                     "children": []
-                }
-            ]
-        }
+                }]
+            }, {
+                "data": {"id": "berqgk2n0a80", "created": 1501841725635, "text": "aaa", "layout": null},
+                "children": []
+            }, {
+                "data": {
+                    "id": "bermyp3r17k0",
+                    "created": 1501831862701,
+                    "text": "我的一个早晨和傍晚",
+                    "layout": null,
+                    "expandState": "expand"
+                },
+                "children": [{
+                    "data": {
+                        "id": "bermdb52l6g0",
+                        "created": 1501830186659,
+                        "text": " ",
+                        "mathjax": "\\({a}^{2}+{b}^{2}={c}^{2}\\)",
+                        "layout": null,
+                        "layout_mind_offset": {"x": 55, "y": -23},
+                        "image": "http://img3.imgtn.bdimg.com/it/u=1188174684,795370521&fm=200&gp=0.jpg",
+                        "imageTitle": "野地小花",
+                        "imageSize": {"width": 200, "height": 133},
+                        "note": null
+                    }, "children": []
+                }]
+            }, {
+                "data": {
+                    "id": "bersjaw3wtc0",
+                    "created": 1501847582961,
+                    "text": "分支主题",
+                    "hyperlink": null,
+                    "hyperlinkTitle": null,
+                    "image": "",
+                    "imageTitle": "",
+                    "imageSize": "",
+                    "mathjax": "\\({这是一个物理公式：a}^{2}+{b}^{2}={c}^{2}\\)",
+                    "layout": null
+                }, "children": []
+            }]
+        }, "template": "right", "theme": "fresh-blue", "version": "1.4.43"
     };
     sendMessage('_mind_data_load_', {
         data: JSON.stringify(data)

@@ -1,6 +1,6 @@
 /*!
  * ====================================================
- * kityminder-editor - v1.0.60 - 2017-08-04
+ * kityminder-editor - v1.0.60 - 2017-08-08
  * https://github.com/fex-team/kityminder-editor
  * GitHub: https://github.com/fex-team/kityminder-editor 
  * Copyright (c) 2017 ; Licensed 
@@ -2214,7 +2214,7 @@ angular.module('kityminderEditor').run(['$templateCache', function($templateCach
 
 
   $templateCache.put('ui/directive/topTab/topTab.html',
-    "<tabset><tab heading=\"{{ 'idea' | lang: 'ui/tabs'; }}\" ng-click=\"toggleTopTab('idea')\" select=\"setCurTab('idea')\"><undo-redo editor=\"editor\"></undo-redo><append-node minder=\"minder\"></append-node><arrange minder=\"minder\"></arrange><operation minder=\"minder\"></operation><hyper-link minder=\"minder\"></hyper-link><image-btn minder=\"minder\"></image-btn><mathjax-btn minder=\"minder\"></mathjax-btn></tab><tab heading=\"{{ 'appearence' | lang: 'ui/tabs'; }}\" ng-click=\"toggleTopTab('appearance')\" select=\"setCurTab('appearance')\"><template-list minder=\"minder\" class=\"inline-directive\"></template-list><theme-list minder=\"minder\"></theme-list><layout minder=\"minder\" class=\"inline-directive\"></layout></tab></tabset>"
+    "<tabset><tab heading=\"{{ 'idea' | lang: 'ui/tabs'; }}\" ng-click=\"toggleTopTab('idea')\" select=\"setCurTab('idea')\"><undo-redo editor=\"editor\"></undo-redo><append-node minder=\"minder\"></append-node><operation minder=\"minder\"></operation><hyper-link minder=\"minder\"></hyper-link><image-btn minder=\"minder\"></image-btn><mathjax-btn minder=\"minder\"></mathjax-btn></tab><tab heading=\"{{ 'appearence' | lang: 'ui/tabs'; }}\" ng-click=\"toggleTopTab('appearance')\" select=\"setCurTab('appearance')\"><template-list minder=\"minder\" class=\"inline-directive\"></template-list><theme-list minder=\"minder\"></theme-list></tab></tabset>"
   );
 
 
@@ -2236,7 +2236,7 @@ angular.module('kityminderEditor').run(['$templateCache', function($templateCach
 
 
   $templateCache.put('ui/dialog/image/image.tpl.html',
-    "<div class=\"modal-header\"><h3 class=\"modal-title\">图片</h3></div><div class=\"modal-body\"><tabset><tab heading=\"图片搜索\"><form class=\"form-inline\"><div class=\"form-group\"><label for=\"search-keyword\">关键词：</label><input type=\"text\" class=\"form-control\" ng-model=\"data.searchKeyword2\" id=\"search-keyword\" placeholder=\"请输入搜索的关键词\"></div><button class=\"btn btn-primary\" ng-click=\"searchImage()\">百度一下</button></form><div class=\"search-result\" id=\"search-result\"><ul><li ng-repeat=\"image in list\" id=\"{{ 'img-item' + $index }}\" ng-class=\"{'selected' : isSelected}\" ng-click=\"selectImage($event)\"><img id=\"{{ 'img-' + $index }}\" ng-src=\"{{ image.src || '' }}\" alt=\"{{ image.title }}\" onerror=\"this.parentNode.removeChild(this)\"> <span>{{ image.title }}</span></li></ul></div></tab><tab heading=\"外链图片\"><form><div class=\"form-group\" ng-class=\"{true: 'has-success', false: 'has-error'}[urlPassed]\"><label for=\"image-url\">链接地址：</label><input type=\"text\" class=\"form-control\" ng-model=\"data.url\" ng-blur=\"urlPassed = data.R_URL.test(data.url)\" ng-focus=\"this.value = data.url\" ng-keydown=\"shortCut($event)\" id=\"image-url\" placeholder=\"必填：以 http(s):// 开头\"></div><div class=\"form-group\" ng-class=\"{'has-success' : titlePassed}\"><label for=\"image-title\">提示文本：</label><input type=\"text\" class=\"form-control\" ng-model=\"data.title\" ng-blur=\"titlePassed = true\" id=\"image-title\" placeholder=\"选填：鼠标在图片上悬停时提示的文本\"></div><div class=\"form-group\"><label for=\"image-preview\">图片预览：</label><img class=\"image-preview\" id=\"image-preview\" ng-src=\"{{ data.url }}\" alt=\"{{ data.title }}\"></div></form></tab><tab heading=\"上传图片\" active=\"true\"><form><div class=\"form-group\"><input type=\"file\" name=\"upload-image\" id=\"upload-image\" class=\"upload-image\" accept=\".jpg,.JPG,jpeg,JPEG,.png,.PNG,.gif,.GIF\" onchange=\"angular.element(this).scope().uploadImage()\"><label for=\"upload-image\" class=\"btn btn-primary\"><span>选择文件&hellip;</span></label></div><div class=\"form-group\" ng-class=\"{'has-success' : titlePassed}\"><label for=\"image-title\">提示文本：</label><input type=\"text\" class=\"form-control\" ng-model=\"data.title\" ng-blur=\"titlePassed = true\" id=\"image-title\" placeholder=\"选填：鼠标在图片上悬停时提示的文本\"></div><div class=\"form-group\"><label for=\"image-preview\">图片预览：</label><img class=\"image-preview\" id=\"image-preview\" ng-src=\"{{ data.url }}\" title=\"{{ data.title }}\" alt=\"{{ data.title }}\"></div></form></tab></tabset></div><div class=\"modal-footer\"><button class=\"btn btn-primary\" ng-click=\"ok()\">确定</button> <button class=\"btn btn-warning\" ng-click=\"cancel()\">取消</button></div>"
+    "<div class=\"modal-header\"><h3 class=\"modal-title\">图片</h3></div><div class=\"modal-body\"><form><div class=\"form-group\"><input type=\"file\" name=\"upload-image\" id=\"upload-image\" class=\"upload-image\" accept=\".jpg,.JPG,jpeg,JPEG,.png,.PNG,.gif,.GIF\" onchange=\"angular.element(this).scope().uploadImage()\"><label for=\"upload-image\" class=\"btn btn-primary\"><span>选择文件&hellip;</span></label><span ng-show=\"loading\" class=\"upload-image-loading\"><i class=\"icon-loading\"></i>图片上传中,请稍后......</span></div><div class=\"form-group\" ng-class=\"{'has-success' : titlePassed}\"><label for=\"image-title\">提示文本：</label><input type=\"text\" class=\"form-control\" ng-model=\"data.title\" ng-blur=\"titlePassed = true\" id=\"image-title\" placeholder=\"选填：鼠标在图片上悬停时提示的文本\"></div><div class=\"form-group\"><label for=\"image-preview\">图片预览：</label><img class=\"image-preview\" id=\"image-preview\" ng-src=\"{{ data.url }}\" title=\"{{ data.title }}\" alt=\"{{ data.title }}\"></div></form></div><div class=\"modal-footer\"><button class=\"btn btn-primary\" ng-click=\"ok()\">确定</button> <button class=\"btn btn-warning\" ng-click=\"cancel()\">取消</button></div>"
   );
 
 
@@ -2818,6 +2818,63 @@ angular.module('kityminderEditor')
             }
     }
 });
+/**
+ * 支持iframe之间的通信
+ */
+angular.module('kityminderEditor')
+    .service('messengerService', ['$window', function ($window) {
+        var receiveQueue = [];
+
+        function parse(data) {
+            try {
+                return JSON.parse(data);
+            } catch (e) {
+                return false;
+            }
+        }
+
+        window.addEventListener('message', function (event) {
+            var data = event.data,
+                temp;
+            if (typeof data === 'string') {
+                temp = parse(data);
+                if (typeof temp === 'object') {
+                    data = temp;
+                }
+            }
+            receiveQueue.forEach(function (cb) {
+                cb(data, event);
+            });
+        }, false);
+
+        return {
+            /**
+             * 发送消息
+             * @param type 消息类型,例如：knowledgemap_add_ref->新增前后置关系；knowledgemap_delete_ref->删除前后置关系
+             * @param data 发送的参数，json格式
+             */
+            sendMessage: function (type, data) {
+                var parent = $window.parent, opener = $window.opener;
+                var params = JSON.stringify(Object.assign({
+                    'type': type
+                }, data));
+
+                [parent, opener].forEach(function (win) {
+                    if (win) {
+                        win.postMessage(params, '*');
+                    }
+                });
+            },
+            registerReceive: function (callback) {
+                if (typeof callback === 'function') {
+                    callback = [callback];
+                }
+
+                receiveQueue = receiveQueue.concat(callback);
+                return callback;
+            }
+        }
+    }]);
 angular.module('kityminderEditor')
     .service('minder.service',  function() {
 
@@ -2980,13 +3037,28 @@ angular.module('kityminderEditor').service('revokeDialog', ['$modal', 'minder.se
  * @copyright: Baidu FEX, 2015
  */
 angular.module('kityminderEditor')
-    .service('server', ['config', '$http',  function(config, $http) {
+    .service('server', ['config', '$http', function (config, $http) {
 
         return {
-            uploadImage: function(file) {
+            uploadImage: function (file) {
                 var url = config.get('imageUpload');
                 var fd = new FormData();
                 fd.append('upload_file', file);
+
+                return $http.post(url, fd, {
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined}
+                });
+            },
+            uploadCsImage: function (session, file) {
+                var serviceName = session.path.split('/')[1];
+                var url = session.cs_url + '/v0.1/upload?serviceName=' + serviceName + '&session=' + session.session;
+                var fd = new FormData();
+                fd.append('path', session.path);
+                fd.append('name', file.name);
+                fd.append('scope', session.scope);
+                fd.append('serviceName', serviceName);
+                fd.append('file', file);
 
                 return $http.post(url, fd, {
                     transformRequest: angular.identity,
@@ -3174,8 +3246,8 @@ angular.module('kityminderEditor')
 
     }]);
 angular.module('kityminderEditor')
-    .controller('image.ctrl', ['$http', '$scope', '$modalInstance', 'image', 'server', function($http, $scope, $modalInstance, image, server) {
-
+    .controller('image.ctrl', ['$http', '$scope', '$modalInstance', 'image', 'server', 'messengerService', function ($http, $scope, $modalInstance, image, server, messengerService) {
+        $scope.loading = false;
         $scope.data = {
             list: [],
             url: image.url || '',
@@ -3183,22 +3255,21 @@ angular.module('kityminderEditor')
             R_URL: /^https?\:\/\/\w+/
         };
 
-        setTimeout(function() {
+        setTimeout(function () {
             var $imageUrl = $('#image-url');
             $imageUrl.focus();
-            $imageUrl[0].setSelectionRange(0, $scope.data.url.length);
+            // $imageUrl[0].setSelectionRange(0, $scope.data.url.length);
         }, 300);
 
-
         // 搜索图片按钮点击事件
-        $scope.searchImage = function() {
+        $scope.searchImage = function () {
             $scope.list = [];
 
             getImageData()
-                .success(function(json) {
-                    if(json && json.data) {
-                        for(var i = 0; i < json.data.length; i++) {
-                            if(json.data[i].objURL) {
+                .success(function (json) {
+                    if (json && json.data) {
+                        for (var i = 0; i < json.data.length; i++) {
+                            if (json.data[i].objURL) {
                                 $scope.list.push({
                                     title: json.data[i].fromPageTitleEnc,
                                     src: json.data[i].middleURL,
@@ -3208,15 +3279,15 @@ angular.module('kityminderEditor')
                         }
                     }
                 })
-                .error(function() {
+                .error(function () {
 
                 });
         };
 
         // 选择图片的鼠标点击事件
-        $scope.selectImage = function($event) {
-            var targetItem = $('#img-item'+ (this.$index));
-            var targetImg = $('#img-'+ (this.$index));
+        $scope.selectImage = function ($event) {
+            var targetItem = $('#img-item' + (this.$index));
+            var targetImg = $('#img-' + (this.$index));
 
             targetItem.siblings('.selected').removeClass('selected');
             targetItem.addClass('selected');
@@ -3225,26 +3296,61 @@ angular.module('kityminderEditor')
             $scope.data.title = targetImg.attr('alt');
         };
 
+        //获取CS session
+        $scope.getCSSession = function () {
+            $scope.loading = true;
+            messengerService.sendMessage('_mind_req_cs_session_', {
+                data: '{}'
+            });
+        };
+
+        //上传图片
+        window.addEventListener('message', function (e) {
+            if (typeof(event.data) !== 'undefined') {
+                var params;
+                try {
+                    params = JSON.parse(e.data);
+                } catch (e) {
+                    params = {};
+                }
+                switch (params.type) {
+                    case '_mind_res_cs_session_': //数据变更通知
+                        $scope.doUploadImage(JSON.parse(params.data));
+                        break;
+                    default:
+                        console.log('unknow mesage type');
+                }
+            }
+        });
+
+        $scope.doUploadImage = function (session) {
+            var file = $('#upload-image')[0].files[0];
+            return server.uploadCsImage(session, file).then(function (resp) {
+                if (resp.data && resp.data.dentry_id) {
+                    $scope.data.url = session.cs_url + '/v0.1/download?dentryId=' + resp.data.dentry_id;
+                    $scope.loading = false;
+                }
+            });
+        };
+
         // 自动上传图片，后端需要直接返回图片 URL
-        $scope.uploadImage = function() {
+        $scope.uploadImage = function () {
+            if ($scope.loading) {
+                return;
+            }
+
             var fileInput = $('#upload-image');
             if (!fileInput.val()) {
                 return;
             }
             if (/^.*\.(jpg|JPG|jpeg|JPEG|gif|GIF|png|PNG)$/.test(fileInput.val())) {
-                var file = fileInput[0].files[0];
-                return server.uploadImage(file).then(function (json) {
-                    var resp = json.data;
-                    if (resp.errno === 0) {
-                        $scope.data.url = resp.data.url;
-                    }
-                });
+                $scope.getCSSession();
             } else {
                 alert("后缀只能是 jpg、gif 及 png");
             }
         };
 
-        $scope.shortCut = function(e) {
+        $scope.shortCut = function (e) {
             e.stopPropagation();
 
             if (e.keyCode == 13) {
@@ -3255,7 +3361,7 @@ angular.module('kityminderEditor')
         };
 
         $scope.ok = function () {
-            if($scope.data.R_URL.test($scope.data.url)) {
+            if ($scope.data.R_URL.test($scope.data.url)) {
                 $modalInstance.close({
                     url: $scope.data.url,
                     title: $scope.data.title
@@ -3266,7 +3372,7 @@ angular.module('kityminderEditor')
                 var $imageUrl = $('#image-url');
                 if ($imageUrl) {
                     $imageUrl.focus();
-                    $imageUrl[0].setSelectionRange(0, $scope.data.url.length);
+                    // $imageUrl[0].setSelectionRange(0, $scope.data.url.length);
                 }
 
             }
@@ -3282,7 +3388,7 @@ angular.module('kityminderEditor')
         function getImageData() {
             var key = $scope.data.searchKeyword2;
             var currentTime = new Date();
-            var url = 'http://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&ct=201326592&fp=result&queryWord='+ key +'&cl=2&lm=-1&ie=utf-8&oe=utf-8&st=-1&ic=0&word='+ key +'&face=0&istype=2&nc=1&pn=60&rn=60&gsm=3c&'+ currentTime.getTime() +'=&callback=JSON_CALLBACK';
+            var url = 'http://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&ct=201326592&fp=result&queryWord=' + key + '&cl=2&lm=-1&ie=utf-8&oe=utf-8&st=-1&ic=0&word=' + key + '&face=0&istype=2&nc=1&pn=60&rn=60&gsm=3c&' + currentTime.getTime() + '=&callback=JSON_CALLBACK';
 
             return $http.jsonp(url);
         }
@@ -3588,65 +3694,95 @@ angular.module('kityminderEditor')
         }
     }]);
 angular.module('kityminderEditor')
-	.directive('kityminderEditor', ['config', 'minder.service', 'revokeDialog', function(config, minderService, revokeDialog) {
-		return {
-			restrict: 'EA',
-			templateUrl: 'ui/directive/kityminderEditor/kityminderEditor.html',
-			replace: true,
-			scope: {
-				onInit: '&'
-			},
-			link: function(scope, element, attributes) {
+    .directive('kityminderEditor', ['config', 'minder.service', 'revokeDialog', '$window', 'messengerService', function (config, minderService, revokeDialog, $window, messengerService) {
+        return {
+            restrict: 'EA',
+            templateUrl: 'ui/directive/kityminderEditor/kityminderEditor.html',
+            replace: true,
+            scope: {
+                onInit: '&'
+            },
+            link: function (scope, element, attributes) {
 
-				var $minderEditor = element.children('.minder-editor')[0];
+                var $minderEditor = element.children('.minder-editor')[0];
 
-				function onInit(editor, minder) {
-					scope.onInit({
-						editor: editor,
-						minder: minder
-					});
+                function onInit(editor, minder) {
+                    scope.onInit({
+                        editor: editor,
+                        minder: minder
+                    });
 
-					minderService.executeCallback();
-				}
+                    minderService.executeCallback();
 
-				if (typeof(seajs) != 'undefined') {
-					/* global seajs */
-					seajs.config({
-						base: './src'
-					});
+                    //监听message事件
+                    $window.addEventListener('message', function (e) {
+                        if (typeof(event.data) !== 'undefined') {
+                            var params;
+                            try {
+                                params = JSON.parse(e.data);
+                            } catch (e) {
+                                params = {};
+                            }
+                            switch (params.type) {
+                                case '_mind_data_load_': //设置数据
+                                    var minderData = JSON.parse(params.data);
+                                    window.localStorage.__orig_minder_content = JSON.stringify(minderData.root); //保存一份原始数据
+                                    editor.minder.importJson(minderData);
+                                    break;
+                                default:
+                                    console.log('unknow mesage type');
+                            }
+                        }
+                    });
+                }
 
-					define('demo', function(require) {
-						var Editor = require('editor');
+                if (typeof(seajs) != 'undefined') {
+                    /* global seajs */
+                    seajs.config({
+                        base: './src'
+                    });
 
-						var editor = window.editor = new Editor($minderEditor);
+                    define('demo', function (require) {
+                        var Editor = require('editor');
 
-						if (window.localStorage.__dev_minder_content) {
-							editor.minder.importJson(JSON.parse(window.localStorage.__dev_minder_content));
-						}
+                        var editor = window.editor = new Editor($minderEditor);
 
-						editor.minder.on('contentchange', function() {
-							window.localStorage.__dev_minder_content = JSON.stringify(editor.minder.exportJson());
-						});
+                        // if (window.localStorage.__dev_minder_content) {
+                        //     editor.minder.importJson(JSON.parse(window.localStorage.__dev_minder_content));
+                        // }
 
-						window.minder = window.km = editor.minder;
+                        editor.minder.on('contentchange', function () {
+                            var editData = editor.minder.exportJson();
+                            var origData = window.localStorage.__orig_minder_content;
 
-						scope.editor = editor;
-						scope.minder = minder;
+                            if (JSON.stringify(editData.root) !== origData) {
+                                var minderData = JSON.stringify(editor.minder.exportJson());
+                                // window.localStorage.__dev_minder_content = minderData;
+                                messengerService.sendMessage('_mind_data_change_', {
+                                    data: minderData
+                                });
+                            }
+                        });
+
+                        window.minder = window.km = editor.minder;
+
+                        scope.editor = editor;
+                        scope.minder = minder;
                         scope.config = config.get();
 
                         //scope.minder.setDefaultOptions(scope.config);
-						scope.$apply();
+                        scope.$apply();
 
-						onInit(editor, minder);
-					});
+                        onInit(editor, minder);
+                    });
 
-					seajs.use('demo');
+                    seajs.use('demo');
 
-				} else if (window.kityminder && window.kityminder.Editor) {
-					var editor = new kityminder.Editor($minderEditor);
+                } else if (window.kityminder && window.kityminder.Editor) {
+                    var editor = new kityminder.Editor($minderEditor);
 
-					window.editor = scope.editor = editor;
-					window.minder = scope.minder = editor.minder;
+                    window.editor = scope.editor = editor;
+                    window.minder = scope.minder = editor.minder;
 
                     scope.config = config.get();
 
@@ -3655,9 +3791,9 @@ angular.module('kityminderEditor')
                     onInit(editor, editor.minder);
                 }
 
-			}
-		}
-	}]);
+            }
+        }
+    }]);
 angular.module('kityminderEditor')
     .directive('kityminderViewer', ['config', 'minder.service', function(config, minderService) {
         return {

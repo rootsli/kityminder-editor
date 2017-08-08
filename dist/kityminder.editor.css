@@ -284,6 +284,18 @@ div.minder-editor-container {
 .btn-group-vertical .image-btn-caption .caption {
   font-size: 12px;
 }
+.upload-image-loading {
+  color: #66adfa;
+  position: relative;
+  display: inline-block;
+  margin-left: 15px;
+}
+.upload-image-loading i.icon-loading {
+  background: url(images/loading.gif) no-repeat;
+  height: 20px;
+  width: 20px;
+  float: left;
+}
 .image-preview {
   display: block;
   max-width: 50%;
