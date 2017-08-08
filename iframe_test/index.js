@@ -65,24 +65,21 @@ window.addEventListener('message', function (e) {
 function onIframeLoad() {
     var data = {
         "root": {
-            "data": {"id": "berm5d9eie80", "created": 1501829564361, "text": "中心主题", "mathjax": ""},
+            "data": {"id": "berm5d9eie80", "created": 1501829564361, "text": "脑图示例"},
             "children": [{
-                "data": {"id": "berqgi7afco0", "created": 1501841721562, "text": "分支主题", "layout": null},
+                "data": {"id": "berqgi7afco0", "created": 1501841721562, "text": "分支1", "layout": null},
                 "children": [{
-                    "data": {"id": "berqgis2bnc0", "created": 1501841722819, "text": "分支主题", "layout": null},
+                    "data": {"id": "berqgis2bnc0", "created": 1501841722819, "text": "分支1-1", "layout": null},
                     "children": []
                 }, {
-                    "data": {"id": "berqgnlbva80", "created": 1501841733295, "text": "分支主题", "layout": null},
+                    "data": {"id": "berqgnlbva80", "created": 1501841733295, "text": "分支1-2", "layout": null},
                     "children": []
                 }]
-            }, {
-                "data": {"id": "berqgk2n0a80", "created": 1501841725635, "text": "aaa", "layout": null},
-                "children": []
             }, {
                 "data": {
                     "id": "bermyp3r17k0",
                     "created": 1501831862701,
-                    "text": "我的一个早晨和傍晚",
+                    "text": "图片和公式",
                     "layout": null,
                     "expandState": "expand"
                 },
@@ -91,27 +88,24 @@ function onIframeLoad() {
                         "id": "bermdb52l6g0",
                         "created": 1501830186659,
                         "text": " ",
-                        "mathjax": "\\({a}^{2}+{b}^{2}={c}^{2}\\)",
-                        "layout": null,
-                        "layout_mind_offset": {"x": 55, "y": -23},
+                        "mathjax": "\\({a}^{2}+{b}^{2}={c}^{2}\\)"
+                    }, "children": []
+                },{
+                    "data": {
+                        "id": "bermdb52l6g1",
+                        "created": 1501830186669,
+                        "text": "",
                         "image": "http://img3.imgtn.bdimg.com/it/u=1188174684,795370521&fm=200&gp=0.jpg",
                         "imageTitle": "野地小花",
-                        "imageSize": {"width": 200, "height": 133},
-                        "note": null
+                        "imageSize":{"width":200,"height":133}
                     }, "children": []
                 }]
             }, {
                 "data": {
                     "id": "bersjaw3wtc0",
                     "created": 1501847582961,
-                    "text": "分支主题",
-                    "hyperlink": null,
-                    "hyperlinkTitle": null,
-                    "image": "",
-                    "imageTitle": "",
-                    "imageSize": "",
-                    "mathjax": "\\({这是一个物理公式：a}^{2}+{b}^{2}={c}^{2}\\)",
-                    "layout": null
+                    "text": "",
+                    "mathjax": "\\({这是一个方程式：a}^{2}+{b}^{2}={c}^{2}\\)"
                 }, "children": []
             }]
         }, "template": "right", "theme": "fresh-blue", "version": "1.4.43"
