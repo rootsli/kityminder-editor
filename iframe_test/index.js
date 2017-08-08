@@ -51,7 +51,7 @@ window.addEventListener('message', function (e) {
         }
         switch (params.type) {
             case '_mind_data_change_': //数据变更通知
-                alert(params.data);
+                console.log(params.data);
                 break;
             case '_mind_req_cs_session_': //请求获取cs session
                 getCSSession();

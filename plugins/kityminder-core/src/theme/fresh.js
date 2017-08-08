@@ -30,9 +30,9 @@ define(function(require, exports, module) {
             'main-space': 5,
 
             'sub-color': 'black',
-            'sub-background': 'transparent', //hsl(h, 33, 95),
-            'sub-stroke': 'none', //hsl(h, 37, 60),
-            // 'sub-stroke-width': 1,
+            'sub-background': hsl(h, 33, 95),
+            'sub-stroke': hsl(h, 37, 60),
+            'sub-stroke-width': 1,
             'sub-font-size': 12,
             'sub-padding': compat ? [3, 5] : [5, 10],
             'sub-margin': compat ? [4, 8] : [15, 20],
