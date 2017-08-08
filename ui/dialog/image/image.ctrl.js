@@ -80,7 +80,7 @@ angular.module('kityminderEditor')
             var file = $('#upload-image')[0].files[0];
             return server.uploadCsImage(session, file).then(function (resp) {
                 if (resp.data && resp.data.dentry_id) {
-                    $scope.data.url = session.cs_url + '/v0.1/download?dentryId=' + resp.data.dentry_id;
+                    $scope.data.url = session.cs_url + '/v0.1/download?size=320&dentryId=' + resp.data.dentry_id;
                     $scope.loading = false;
                 }
             });
