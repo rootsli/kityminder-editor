@@ -105,7 +105,7 @@ function onIframeLoad() {
                     "id": "bersjaw3wtc0",
                     "created": 1501847582961,
                     "text": "",
-                    "mathjax": "\\({这是一个方程式：a}^{2}+{b}^{2}={c}^{2}\\)"
+                    "mathjax": "\\(这是一个方程式：{a}^{2}+{b}^{2}={c}^{2}\\)"
                 }, "children": []
             }]
         }, "template": "right", "theme": "fresh-blue", "version": "1.4.43"
